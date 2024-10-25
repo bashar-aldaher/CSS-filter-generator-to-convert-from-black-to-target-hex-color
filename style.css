@@ -6,6 +6,7 @@
 }
 tr {
   display: flex;
+  width: 100vw;
 }
 td {
   width: 50%;
