@@ -377,6 +377,16 @@ $(document).ready(() => {
   const imagePreview = $(".imagePreview");
   const filteredImage = $(".filteredImage");
   const blackFilteredImage = $(".blackFilteredImage");
+  const filteredImageContainer = $(".filtered-image");
+  const blackImageContainer = $(".black-image");
+  const blackFilterInstructions = $("p.black-filter-instructions");
+  const applyBlackFilterButton = $("button.apply-black-filter");
+
+  // Hide containers and elements initially
+  filteredImageContainer.hide();
+  blackImageContainer.hide();
+  blackFilterInstructions.hide();
+  applyBlackFilterButton.hide();
 
   // Handle image upload and show preview
   imageInput.change(function (event) {
@@ -431,8 +441,13 @@ $(document).ready(() => {
       filteredImage.attr("src", imagePreview.attr("src"));
       filteredImage.css("filter", result.filter);
       filteredImage.show();
-      [];
+      filteredImageContainer.show(); // Show the filtered image container
+      blackFilterInstructions.show(); // Show instructions for black filter
+      applyBlackFilterButton.show(); // Show the black filter button
     } else {
+      filteredImageContainer.hide(); // Hide if no image
+      blackFilterInstructions.hide(); // Hide instructions if no image
+      applyBlackFilterButton.hide(); // Hide button if no image
       alert("Please upload an image first.");
     }
   });
@@ -441,13 +456,14 @@ $(document).ready(() => {
   $("button.apply-black-filter").click(() => {
     if (imagePreview.attr("src")) {
       blackFilteredImage.attr("src", imagePreview.attr("src"));
-      //   blackFilteredImage.attr("style", result.filter);
       blackFilteredImage.css(
         "filter",
         "brightness(0) saturate(100%)" + result.filter
       );
-      blackFilteredImage.show(); // Show the black-filtered image behind the others
+      blackFilteredImage.show(); // Show the black-filtered image
+      blackImageContainer.show(); // Show the black-filtered container
     } else {
+      blackImageContainer.hide(); // Hide if no image
       alert("Please upload an image first.");
     }
   });
