@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Filters</title>
+    <link href="/style.css" rel="stylesheet" type="text/css" />
+    <style></style>
+  </head>
+  <body>
+    <table>
+      <tr valign="top">
+        <td>
+          <p>
+            <label>Upload an image</label>
+            <input class="imageInput" type="file" accept="image/*" />
+          </p>
+          <p>
+            <label>Target color</label>
+            <input
+              class="target"
+              type="text"
+              placeholder="target hex"
+              value="#00a99d"
+            />
+          </p>
+          <!-- Container for images -->
+          <div class="imageWrapper">
+            <img class="imagePreview" style="display: none" />
+            <span class="filteredImage" style="display: none">--></span>
+            <img class="filteredImage" style="display: none" />
+            <span class="blackFilteredImage" style="display: none">--></span>
+            <img class="blackFilteredImage" style="display: none" />
+          </div>
+          <button class="execute">Compute Filters</button>
+          <div class="filtered-image">
+            <div class="card">
+              <div class="tools">
+                <div class="circle">
+                  <span class="red box"></span>
+                </div>
+                <div class="circle">
+                  <span class="yellow box"></span>
+                </div>
+                <div class="circle">
+                  <span class="green box"></span>
+                </div>
+              </div>
+              <div class="card__content">
+                <button class="copy-button">Copy</button>
+                <p>filter:</p>
+                <p class="filterDetail"></p>
+                <p>;</p>
+              </div>
+            </div>
+            <div class="imageWrapper">
+              <img class="filteredImage" style="display: none" />
+            </div>
+          </div>
+
+          <p>
+            * For this code to work well the starting color needs to be black.
+            If your icon set isn't black you can prepend "brightness(0)
+            saturate(100%)" to your filter property which will first turn the
+            icon set to black.
+          </p>
+          <button class="apply-black-filter">
+            turn the icon set to black and compute filter again
+          </button>
+          <div class="black-image">
+            <div class="card">
+              <div class="tools">
+                <div class="circle">
+                  <span class="red box"></span>
+                </div>
+                <div class="circle">
+                  <span class="yellow box"></span>
+                </div>
+                <div class="circle">
+                  <span class="green box"></span>
+                </div>
+              </div>
+              <div class="card__content">
+                <button class="copy-button-2">Copy</button>
+                <p>filter:</p>
+                <p>Brightness(0) Saturate(100%)</p>
+                <p class="filterDetail"></p>
+                <p>;</p>
+              </div>
+            </div>
+            <div class="imageWrapper">
+              <img class="blackFilteredImage" style="display: none" />
+            </div>
+          </div>
+        </td>
+        <td>
+          <p>
+            <label>Target color</label>
+            <input
+              class="target-separate"
+              type="text"
+              placeholder="target hex"
+              value="#00a99d"
+            />
+          </p>
+          <button class="execute-separate">Compute Filters</button>
+          <p>
+            Real pixel, color applied through CSS <code>background-color</code>:
+          </p>
+          <div class="pixel realPixel-separate"></div>
+
+          <p>Filtered pixel, color applied through CSS <code>filter</code>:</p>
+          <div class="pixel filterPixel-separate"></div>
+
+          <p class="filterDetail-separate"></p>
+          <p class="lossDetail-separate"></p>
+        </td>
+      </tr>
+    </table>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="/script.js"></script>
+  </body>
+</html>
